@@ -13,6 +13,9 @@
   - Ignore hidden files, `node_modules`, and files starting with `.`.
   - No files ignored (all files included).
 - **Output Display**: View the generated file tree directly in the VS Code editor.
+- **User Settings**:
+  - Users can now set a default file name for the generated file tree
+  - Added the ability to specify ignored patterns through settings
 
 ## How to Use
 

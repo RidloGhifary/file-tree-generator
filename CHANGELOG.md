@@ -31,3 +31,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - "Ignore hidden files, node_modules, and files starting with ."
   - "None" (no files ignored).
 - Enhanced file tree generation logic to incorporate user choices for ignored files.
+- Users can now set a default file name for the generated file tree
+- Added the ability to specify ignored patterns through settings
