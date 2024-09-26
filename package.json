@@ -2,7 +2,7 @@
   "name": "testing",
   "displayName": "testing",
   "description": "testing description",
-  "version": "0.0.1",
+  "version": "0.1.2",
   "engines": {
     "vscode": "^1.80.2"
   },
@@ -48,6 +48,21 @@
             ".vscode"
           ],
           "description": "List of patterns to ignore when generating the file tree."
+        },
+        "fileTreeGenerator.folderColor": {
+          "type": "string",
+          "default": "#6c757d",
+          "description": "Color for folder names in the file tree."
+        },
+        "fileTreeGenerator.fileColor": {
+          "type": "string",
+          "default": "#343a40",
+          "description": "Color for file names in the file tree."
+        },
+        "fileTreeGenerator.ignoreColor": {
+          "type": "string",
+          "default": "#dc3545",
+          "description": "Color for ignored files/directories in the file tree."
         }
       }
     }

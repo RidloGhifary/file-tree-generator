@@ -91,17 +91,29 @@ function activate(context) {
                   "Yes",
                   "No"
                 );
-                if (overwrite !== "Yes") {
+
+                if (overwrite === "No") {
+                  // Prompt for a new file name
+                  fileName = await vscode.window.showInputBox({
+                    placeHolder: "Enter a new file name",
+                    prompt:
+                      "Enter the name of the file to generate (e.g., tree.txt)",
+                    value: defaultFileName,
+                  });
+                } else if (overwrite !== "Yes") {
                   return; // Abort saving
                 }
               }
 
-              await fs.promises.writeFile(outputFilePath, tree);
+              const newOutputFilePath = path.join(rootPath, fileName);
+              await fs.promises.writeFile(newOutputFilePath, tree);
 
               // Open the output file in the editor
-              vscode.workspace.openTextDocument(outputFilePath).then((doc) => {
-                vscode.window.showTextDocument(doc);
-              });
+              vscode.workspace
+                .openTextDocument(newOutputFilePath)
+                .then((doc) => {
+                  vscode.window.showTextDocument(doc);
+                });
 
               vscode.window.showInformationMessage(
                 "File Tree Generated and saved to: " + fileName

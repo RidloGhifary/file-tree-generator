@@ -1,7 +1,10 @@
 const fs = require("fs");
 const path = require("path");
+const vscode = require("vscode");
 
 const { isIgnored } = require("./isIgnored");
+
+const config = vscode.workspace.getConfiguration("fileTreeGenerator");
 
 async function generateFileTree(dir, progress, prefix = "") {
   let tree = "";

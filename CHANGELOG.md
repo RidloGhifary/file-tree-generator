@@ -33,3 +33,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Enhanced file tree generation logic to incorporate user choices for ignored files.
 - Users can now set a default file name for the generated file tree
 - Added the ability to specify ignored patterns through settings
+
+## [0.1.2] - 2024-09-27
+
+### Fix
+
+- Overwrite file name when user says "No".
