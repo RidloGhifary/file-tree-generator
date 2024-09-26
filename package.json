@@ -21,11 +21,10 @@
     "keybindings": [
       {
         "command": "file-tree-generator.generate",
-        "key": "shift+alt+f",
-        "when": "editorTextFocus",
-        "windows": "ctrl+shift+alt+f",
-        "mac": "cmd+shift+alt+f",
-        "linux": "ctrl+shift+alt+f"
+        "key": "ctrl+alt+t",
+        "windows": "ctrl+alt+t",
+        "mac": "ctrl+alt+t",
+        "linux": "ctrl+alt+t"
       }
     ]
   },

@@ -14,7 +14,7 @@ function activate(context) {
       if (workspaceFolders && workspaceFolders.length > 0) {
         const rootPath = workspaceFolders[0].uri.fsPath;
         const tree = await generateFileTree(rootPath);
-        const fileName = "FILE_TREE.txt";
+        const fileName = "FILE-TREE.txt";
 
         // Save the file tree to a file in the root folder
         const outputFilePath = path.join(rootPath, fileName);
