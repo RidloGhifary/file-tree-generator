@@ -1,65 +1,42 @@
-# testing README
+# File Tree Generator
 
-This is the README for your extension "testing". After writing up a brief description, we recommend including the following sections.
+**File Tree Generator** is a Visual Studio Code extension that allows users to generate a visual file tree of their workspace with just one click. This extension provides a quick and easy way to view the structure of your project and even includes options to show file sizes.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- 📂 **Generate File Tree:** Visualize the structure of your project folders and files.
+- 📊 **File Sizes (Optional):** Option to include file sizes alongside the file names.
+- 💾 **Custom File Name:** Users can choose the name for the file tree output.
+- ⚡ **Keyboard Shortcut:** Quickly generate a file tree using a customizable keyboard shortcut.
+- 💡 **Customizable Output:** Choose whether to generate just the file tree or include file sizes as well.
 
-For example if there is an image subfolder under your extension project workspace:
+## How to Use
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Open a folder in VS Code.
+2. Press `Ctrl+Alt+t` to open the command palette.
+3. Type `Generate File Tree` and select the option you prefer:
+   - **Generate File Tree**: Create a basic file tree.
+   - **Generate File Tree with Sizes**: Create a file tree that includes file sizes.
+4. You will be asked for the name of the file.
+5. The output will be saved as `FILE-TREE.txt` by default (or your chosen file name) in the root directory of the workspace.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Custom Keyboard Shortcut
 
-## Requirements
+By default, you can trigger the command through the command palette. If you'd like to assign a keyboard shortcut:
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+1. Go to **Preferences** > **Keyboard Shortcuts**.
+2. Search for `fileTreeGenerator.generate` and assign your preferred shortcut.
 
-## Extension Settings
+## Installation
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+1. Download or clone this repository.
+2. Install the extension in VS Code by navigating to `Extensions` > `Install from VSIX` or searching the marketplace once it’s published.
+3. Enjoy quick and easy file tree generation!
 
-For example:
+## Contributing
 
-This extension contributes the following settings:
+Contributions are welcome! Feel free to open issues or submit pull requests to improve the extension.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## License
 
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
