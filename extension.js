@@ -18,7 +18,9 @@ function activate(context) {
 
       if (workspaceFolders && workspaceFolders.length > 0) {
         const rootPath = workspaceFolders[0].uri.fsPath;
-        const fileName = "FILE-TREE.txt";
+
+        // Prompt user for file name
+        let fileName;
 
         // Present option for user
         const options = ["Generate File Tree", "Generate File Tree with Sizes"];
@@ -35,6 +37,13 @@ function activate(context) {
         }
 
         if (tree) {
+          // Prompt user for file name
+          fileName = await vscode.window.showInputBox({
+            placeHolder: "Enter file name",
+            prompt: "Enter the name of the file to generate (e.g., tree.txt)",
+            value: "FILE-TREE.txt",
+          });
+
           // Save the file tree to a file in the root folder
           const outputFilePath = path.join(rootPath, fileName);
           await fs.promises.writeFile(outputFilePath, tree);
