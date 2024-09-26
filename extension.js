@@ -6,6 +6,8 @@ const {
   generateFileTree,
   generateFileTreeWithSizes,
 } = require("./utils/generateFileTree");
+const { setIgnoredPatterns } = require("./utils/isIgnored");
+const { ignoreOptions } = require("./constant/index");
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -18,6 +20,16 @@ function activate(context) {
 
       if (workspaceFolders && workspaceFolders.length > 0) {
         const rootPath = workspaceFolders[0].uri.fsPath;
+
+        // Prompt user for ignore options
+        const selectedIgnoreOption = await vscode.window.showQuickPick(
+          ignoreOptions,
+          {
+            placeHolder: "Select ignore options",
+          }
+        );
+
+        setIgnoredPatterns(selectedIgnoreOption);
 
         // Prompt user for file name
         let fileName;

@@ -1,12 +1,20 @@
 const fs = require("fs");
 const path = require("path");
 
+const { isIgnored } = require("./isIgnored");
+
 async function generateFileTree(dir, prefix = "") {
   let tree = "";
   const files = await fs.promises.readdir(dir);
 
   for (let i = 0; i < files.length; i++) {
     const filePath = path.join(dir, files[i]);
+
+    // Skip ignored files or directories
+    if (isIgnored(filePath)) {
+      continue;
+    }
+
     const stat = await fs.promises.stat(filePath);
 
     const isLast = i === files.length - 1;
@@ -30,6 +38,12 @@ async function generateFileTreeWithSizes(dir, prefix = "") {
 
   for (const file of files) {
     const filePath = path.join(dir, file);
+
+    // Skip ignored files or directories
+    if (isIgnored(filePath)) {
+      continue;
+    }
+
     const stats = fs.statSync(filePath);
     const fileSizeInBytes = stats.size;
 
