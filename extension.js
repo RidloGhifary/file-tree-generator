@@ -44,62 +44,75 @@ function activate(context) {
           placeHolder: "Select an option",
         });
 
-        // Handle user choice
-        let tree;
-        if (selectedOption === options[0]) {
-          tree = await generateFileTree(rootPath);
-        } else if (selectedOption === options[1]) {
-          tree = await generateFileTreeWithSizes(rootPath);
-        }
+        // Show progress indicator while generating file tree
+        await vscode.window.withProgress(
+          {
+            location: vscode.ProgressLocation.Notification,
+            title: "Generating File Tree",
+            cancellable: false,
+          },
+          async (progress) => {
+            progress.report({ increment: 0, message: "Starting..." });
 
-        if (tree) {
-          // Prompt user for file name
-          fileName = await vscode.window.showInputBox({
-            placeHolder: "Enter file name",
-            prompt: "Enter the name of the file to generate (e.g., tree.txt)",
-            value: defaultFileName,
-          });
+            // Handle user choice
+            let tree;
+            if (selectedOption === options[0]) {
+              tree = await generateFileTree(rootPath, progress);
+            } else if (selectedOption === options[1]) {
+              tree = await generateFileTreeWithSizes(rootPath);
+            }
 
-          // Handle potential invalid file name input
-          if (!fileName) {
-            vscode.window.showErrorMessage("File name cannot be empty.");
-            return;
-          }
+            if (tree) {
+              // Prompt user for file name
+              fileName = await vscode.window.showInputBox({
+                placeHolder: "Enter file name",
+                prompt:
+                  "Enter the name of the file to generate (e.g., tree.txt)",
+                value: defaultFileName,
+              });
 
-          // Save the file tree to a file in the root folder
-          const outputFilePath = path.join(rootPath, fileName);
+              // Handle potential invalid file name input
+              if (!fileName) {
+                vscode.window.showErrorMessage("File name cannot be empty.");
+                return;
+              }
 
-          // Check if file already exists
-          if (fs.existsSync(outputFilePath)) {
-            const overwrite = await vscode.window.showWarningMessage(
-              `File ${fileName} already exists. Overwrite?`,
-              {
-                modal: true,
-                detail: "Select 'Yes' to overwrite or 'No' to rename.",
-              },
-              "Yes",
-              "No"
-            );
-            if (overwrite !== "Yes") {
-              return; // Abort saving
+              // Save the file tree to a file in the root folder
+              const outputFilePath = path.join(rootPath, fileName);
+
+              // Check if file already exists
+              if (fs.existsSync(outputFilePath)) {
+                const overwrite = await vscode.window.showWarningMessage(
+                  `File ${fileName} already exists. Overwrite?`,
+                  {
+                    modal: true,
+                    detail: "Select 'Yes' to overwrite or 'No' to rename.",
+                  },
+                  "Yes",
+                  "No"
+                );
+                if (overwrite !== "Yes") {
+                  return; // Abort saving
+                }
+              }
+
+              await fs.promises.writeFile(outputFilePath, tree);
+
+              // Open the output file in the editor
+              vscode.workspace.openTextDocument(outputFilePath).then((doc) => {
+                vscode.window.showTextDocument(doc);
+              });
+
+              vscode.window.showInformationMessage(
+                "File Tree Generated and saved to: " + fileName
+              );
+            } else {
+              vscode.window.showErrorMessage(
+                "An error occurred while generating the file tree."
+              );
             }
           }
-
-          await fs.promises.writeFile(outputFilePath, tree);
-
-          // Open the output file in the editor
-          vscode.workspace.openTextDocument(outputFilePath).then((doc) => {
-            vscode.window.showTextDocument(doc);
-          });
-
-          vscode.window.showInformationMessage(
-            "File Tree Generated and saved to: " + fileName
-          );
-        } else {
-          vscode.window.showErrorMessage(
-            "An error occurred while generating the file tree."
-          );
-        }
+        );
       } else {
         vscode.window.showInformationMessage("No folder or workspace opened.");
       }

@@ -3,9 +3,10 @@ const path = require("path");
 
 const { isIgnored } = require("./isIgnored");
 
-async function generateFileTree(dir, prefix = "") {
+async function generateFileTree(dir, progress, prefix = "") {
   let tree = "";
   const files = await fs.promises.readdir(dir);
+  const totalFiles = files.length;
 
   for (let i = 0; i < files.length; i++) {
     const filePath = path.join(dir, files[i]);
@@ -25,8 +26,14 @@ async function generateFileTree(dir, prefix = "") {
     // If it's a directory, recursively generate its file tree
     if (stat.isDirectory()) {
       const newPrefix = prefix + (isLast ? "    " : "│   ");
-      tree += await generateFileTree(filePath, newPrefix);
+      tree += await generateFileTree(filePath, progress, newPrefix);
     }
+
+    // Report progress (you can modify this as needed)
+    progress.report({
+      increment: 100 / totalFiles,
+      message: `Processing: ${files[i]}`,
+    });
   }
 
   return tree;
