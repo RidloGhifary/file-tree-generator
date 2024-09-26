@@ -17,6 +17,16 @@
         "command": "file-tree-generator.generate",
         "title": "Generate file tree"
       }
+    ],
+    "keybindings": [
+      {
+        "command": "file-tree-generator.generate",
+        "key": "shift+alt+f",
+        "when": "editorTextFocus",
+        "windows": "ctrl+shift+alt+f",
+        "mac": "cmd+shift+alt+f",
+        "linux": "ctrl+shift+alt+f"
+      }
     ]
   },
   "scripts": {
