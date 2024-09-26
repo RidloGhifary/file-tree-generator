@@ -26,7 +26,31 @@
         "mac": "ctrl+alt+t",
         "linux": "ctrl+alt+t"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "File Tree Generator Settings",
+      "properties": {
+        "fileTreeGenerator.defaultFileName": {
+          "type": "string",
+          "default": "FILE-TREE.txt",
+          "description": "The default file name for the generated file tree."
+        },
+        "fileTreeGenerator.ignoredPatterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            ".*",
+            "node_modules",
+            ".git",
+            ".vscode"
+          ],
+          "description": "List of patterns to ignore when generating the file tree."
+        }
+      }
+    }
   },
   "scripts": {
     "lint": "eslint .",

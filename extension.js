@@ -21,6 +21,10 @@ function activate(context) {
       if (workspaceFolders && workspaceFolders.length > 0) {
         const rootPath = workspaceFolders[0].uri.fsPath;
 
+        // Get user settings
+        const config = vscode.workspace.getConfiguration("fileTreeGenerator");
+        const defaultFileName = config.get("defaultFileName", "FILE-TREE.txt");
+
         // Prompt user for ignore options
         const selectedIgnoreOption = await vscode.window.showQuickPick(
           ignoreOptions,
@@ -53,11 +57,34 @@ function activate(context) {
           fileName = await vscode.window.showInputBox({
             placeHolder: "Enter file name",
             prompt: "Enter the name of the file to generate (e.g., tree.txt)",
-            value: "FILE-TREE.txt",
+            value: defaultFileName,
           });
+
+          // Handle potential invalid file name input
+          if (!fileName) {
+            vscode.window.showErrorMessage("File name cannot be empty.");
+            return;
+          }
 
           // Save the file tree to a file in the root folder
           const outputFilePath = path.join(rootPath, fileName);
+
+          // Check if file already exists
+          if (fs.existsSync(outputFilePath)) {
+            const overwrite = await vscode.window.showWarningMessage(
+              `File ${fileName} already exists. Overwrite?`,
+              {
+                modal: true,
+                detail: "Select 'Yes' to overwrite or 'No' to rename.",
+              },
+              "Yes",
+              "No"
+            );
+            if (overwrite !== "Yes") {
+              return; // Abort saving
+            }
+          }
+
           await fs.promises.writeFile(outputFilePath, tree);
 
           // Open the output file in the editor
