@@ -11,12 +11,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Initial release of the extension.
 - Generate a file tree of the workspace with one click.
 - Output is saved in a `FILE-TREE.txt` file by default in the root of the workspace.
-- Display the generated file tree in VS Code editor after creation.
+- Display the generated file tree in the VS Code editor after creation.
 
-## [0.1.1] - 2024-09-26
+## [0.1.0] - 2024-09-26
 
 ### Added
 
-- Generate a file tree of the workspace with options file sizes
-- Output is saved in a file that user can type their own name
-- Display the generated file tree in VS Code editor after creation.
+- Generate a file tree of the workspace with options for including file sizes.
+- Output is saved in a user-defined file name.
+- Display the generated file tree in the VS Code editor after creation.
+
+## [0.1.1] - 2024-09-27
+
+### Added
+
+- User options to ignore hidden files and specific directories like `node_modules`, `.git`, and `.vscode`.
+- Options for ignoring:
+  - "Ignore hidden files and node_modules"
+  - "Ignore hidden files, node_modules, and files starting with ."
+  - "None" (no files ignored).
+- Enhanced file tree generation logic to incorporate user choices for ignored files.

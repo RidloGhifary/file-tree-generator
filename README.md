@@ -4,11 +4,15 @@
 
 ## Features
 
-- 📂 **Generate File Tree:** Visualize the structure of your project folders and files.
-- 📊 **File Sizes (Optional):** Option to include file sizes alongside the file names.
-- 💾 **Custom File Name:** Users can choose the name for the file tree output.
-- ⚡ **Keyboard Shortcut:** Quickly generate a file tree using a customizable keyboard shortcut.
-- 💡 **Customizable Output:** Choose whether to generate just the file tree or include file sizes as well.
+- **Generate File Tree:** Visualize the structure of your project folders and files.
+- **File Sizes (Optional):** Option to include file sizes alongside the file names.
+- **Custom File Name:** Users can choose the name for the file tree output.
+- **Keyboard Shortcut:** Quickly generate a file tree using a customizable keyboard shortcut.
+- **Ignore Options**:
+  - Ignore hidden files and the `node_modules` directory.
+  - Ignore hidden files, `node_modules`, and files starting with `.`.
+  - No files ignored (all files included).
+- **Output Display**: View the generated file tree directly in the VS Code editor.
 
 ## How to Use
 
@@ -35,7 +39,7 @@ By default, you can trigger the command through the command palette. If you'd li
 
 ## Contributing
 
-Contributions are welcome! Feel free to open issues or submit pull requests to improve the extension.
+I genuinely believe that collaboration is key in development, so I welcome any contributions or feedback from fellow developers who are interested in this project. Your insights could help make this extension even better! Additionally, I believe this project has a lot of potential for future features, and I would love to see it evolve with the help of the community.
 
 ## License
 
