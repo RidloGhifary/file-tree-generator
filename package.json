@@ -3,6 +3,7 @@
   "displayName": "File Tree Generator",
   "description": "A VS Code extension that generates a file tree for your workspace with customizable options for ignored files and sizes.",
   "author": "Ridlo achmad ghifary",
+  "publisher": "Ridloachmadghifary",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.80.2"
