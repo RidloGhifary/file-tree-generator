@@ -1,14 +1,19 @@
 {
-  "name": "testing",
-  "displayName": "testing",
-  "description": "testing description",
-  "version": "0.1.2",
+  "name": "file-tree-generator",
+  "displayName": "File Tree Generator",
+  "description": "A VS Code extension that generates a file tree for your workspace with customizable options for ignored files and sizes.",
+  "author": "Ridlo achmad ghifary",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.80.2"
   },
   "categories": [
     "Other"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RidloGhifary/file-tree-generator"
+  },
   "activationEvents": [],
   "main": "./extension.js",
   "contributes": {
@@ -73,9 +78,8 @@
     }
   },
   "scripts": {
-    "lint": "eslint .",
-    "pretest": "npm run lint",
-    "test": "vscode-test"
+    "package": "vsce package",
+    "publish": "vsce publish"
   },
   "devDependencies": {
     "@types/vscode": "^1.80.2",

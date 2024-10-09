@@ -27,6 +27,14 @@
 4. You will be asked for the name of the file.
 5. The output will be saved as `FILE-TREE.txt` by default (or your chosen file name) in the root directory of the workspace.
 
+## Settings
+
+This extension can be customized through settings:
+
+- **`fileTreeGenerator.defaultFileName`**: Set the default file name for the generated file tree.
+- **`fileTreeGenerator.includeFiles`**: Choose whether to include files in the file tree.
+- **`fileTreeGenerator.ignoredPatterns`**: Set default ignore patterns for files and directories.
+
 ## Custom Keyboard Shortcut
 
 By default, you can trigger the command through the command palette. If you'd like to assign a keyboard shortcut:
@@ -43,6 +51,10 @@ By default, you can trigger the command through the command palette. If you'd li
 ## Contributing
 
 I genuinely believe that collaboration is key in development, so I welcome any contributions or feedback from fellow developers who are interested in this project. Your insights could help make this extension even better! Additionally, I believe this project has a lot of potential for future features, and I would love to see it evolve with the help of the community.
+
+## Issues and Feedback
+
+If you encounter any issues or have suggestions for improvement, feel free to open an issue on the GitHub repository or leave a review on the Visual Studio Code Marketplace.
 
 ## License
 
