@@ -36,6 +36,11 @@
           "default": "FILE-TREE.txt",
           "description": "The default file name for the generated file tree."
         },
+        "fileTreeGenerator.includeFiles": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to include files in the generated file tree or just directories."
+        },
         "fileTreeGenerator.ignoredPatterns": {
           "type": "array",
           "items": {

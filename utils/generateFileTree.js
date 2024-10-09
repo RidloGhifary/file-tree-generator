@@ -5,6 +5,7 @@ const vscode = require("vscode");
 const { isIgnored } = require("./isIgnored");
 
 const config = vscode.workspace.getConfiguration("fileTreeGenerator");
+const includeFiles = config.get("includeFiles", true);
 
 async function generateFileTree(dir, progress, prefix = "") {
   let tree = "";
@@ -20,8 +21,12 @@ async function generateFileTree(dir, progress, prefix = "") {
     }
 
     const stat = await fs.promises.stat(filePath);
-
     const isLast = i === files.length - 1;
+
+    // If it's a file and includeFiles is false, skip adding it
+    if (!stat.isDirectory() && !includeFiles) {
+      continue;
+    }
 
     // Add the current file or directory to the tree
     tree += `${prefix}${isLast ? "└── " : "├── "}${files[i]}\n`;
