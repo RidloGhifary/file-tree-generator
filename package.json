@@ -1,10 +1,11 @@
 {
-  "name": "file-tree-generator",
-  "displayName": "File Tree Generator",
+  "name": "tree-structure-generator",
+  "displayName": "Tree Structure Generator",
   "description": "A VS Code extension that generates a file tree for your workspace with customizable options for ignored files and sizes.",
   "author": "Ridlo achmad ghifary",
   "publisher": "Ridloachmadghifary",
-  "version": "1.0.0",
+  "icon": "icon.png",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.80.2"
   },
